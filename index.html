@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyugalife — WhatsApp Re-engagement Flow Plans · All L1 Categories</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;font-size:13px;padding:24px 20px}
+.page{max-width:960px;margin:0 auto}
+.header{background:white;border-radius:12px;padding:28px 32px;margin-bottom:20px;border:1px solid #e5e5e0}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.logo{font-size:22px;font-weight:700;color:#1a1a1a}
+.logo span{color:#7c3aed}
+.meta{font-size:11px;color:#888;margin-top:2px}
+.badge{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600}
+.framework{background:#fafaf8;border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.7;color:#555}
+.framework strong{color:#1a1a1a}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:7px 14px;border-radius:20px;font-size:11.5px;font-weight:500;cursor:pointer;border:1px solid #e5e5e0;color:#555;background:white;transition:all .15s}
+.tab.active{color:white;border-color:transparent}
+.panel{display:none;background:white;border-radius:12px;padding:24px 28px;border:1px solid #e5e5e0}
+.panel.active{display:block}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #f0efeb}
+.cat-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px}
+.cat-title{font-size:16px;font-weight:600;color:#1a1a1a}
+.cat-sub{font-size:11px;color:#888;margin-top:2px}
+.tone-tag{display:inline-block;border-radius:20px;padding:4px 10px;font-size:10.5px;font-weight:600;margin-left:auto}
+.section-title{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#aaa;margin:18px 0 8px}
+.insight-box{border-left:3px solid #3b82f6;padding:10px 14px;background:#eff6ff;border-radius:0 8px 8px 0;font-size:12px;color:#1e40af;line-height:1.7;margin-bottom:4px}
+.insight-box strong{color:#1e3a8a}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.mini-card{background:#fafaf8;border-radius:8px;padding:10px 12px;font-size:11.5px}
+.mini-card .label{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#888;margin-bottom:5px}
+.mini-card .val{color:#333;line-height:1.6}
+.wa-msg-wrap{background:#f0f0f0;border-radius:12px;padding:14px;margin-bottom:4px}
+.wa-avatar{width:30px;height:30px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0}
+.wa-row{display:flex;gap:10px;align-items:flex-start}
+.wa-bubble{background:#DCF8C6;border-radius:0 12px 12px 12px;padding:10px 13px;font-size:12px;line-height:1.6;color:#111}
+.wa-time{font-size:10px;color:#667781;text-align:right;margin-top:3px}
+.wa-btns{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.wa-btn{display:inline-block;border:1px solid #25D366;border-radius:18px;padding:5px 12px;font-size:11px;color:#00A884;background:white;font-weight:500}
+.wa-btn.primary{background:#25D366;color:white;border-color:#25D366}
+.cross-card{background:#fafaf8;border-radius:8px;padding:12px 14px}
+.cross-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:11.5px;padding-bottom:8px;border-bottom:1px solid #f0efeb}
+.cross-row:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.pair-tag{display:inline-block;background:white;border:1px solid #e5e5e0;border-radius:14px;padding:3px 9px;font-size:10.5px;color:#333;white-space:nowrap}
+.plus{color:#aaa;font-size:11px;padding:0 2px;white-space:nowrap;margin-top:2px}
+.reason{color:#666;line-height:1.5;flex:1}
+.footer{margin-top:24px;padding:14px 20px;background:white;border-radius:8px;display:flex;justify-content:space-between;font-size:10px;color:#aaa;border:1px solid #e5e5e0}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-top">
+    <div><div class="logo">Hyuga<span>life</span></div><div class="meta">WhatsApp Re-engagement Strategy · All L1 Categories · Drop-off Targeting</div></div>
+    <div class="badge">9 L1 categories · 75+ L2 subcategories</div>
+  </div>
+  <div class="framework">
+    <strong>Strategic framework — "unlock more value":</strong> Every flow is designed with 3 layers. (1) <strong>Drop-off empathy</strong> — the MSG 1 template acknowledges they were browsing, not stalking them. (2) <strong>Consultative L2 routing</strong> — 3 quick reply buttons map to the most common intent clusters within that category, surfacing the right L2. (3) <strong>Cross-sell science</strong> — the recommendation is never "another product to buy" but a pairing that makes their original choice work better. The goal: raise AOV while making the customer feel smarter, not sold to. Health Supplements (L1 already done) is excluded from this doc.
+  </div>
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-tab="0" style="background:#6366f1;color:white;border-color:#6366f1">Sports Nutrition</div>
+  <div class="tab" data-tab="1">Health Foods</div>
+  <div class="tab" data-tab="2">Hair, Skin &amp; Nails</div>
+  <div class="tab" data-tab="3">Weight Management</div>
+  <div class="tab" data-tab="4">Women's Health</div>
+  <div class="tab" data-tab="5">Ayurvedic &amp; Herbal</div>
+  <div class="tab" data-tab="6">Sexual Health</div>
+  <div class="tab" data-tab="7">Fitness Gear</div>
+</div>
+
+<!-- PANEL 0: SPORTS NUTRITION -->
+<div class="panel active" id="panel-0">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#eef2ff">💪</div>
+    <div><div class="cat-title">Sports Nutrition</div><div class="cat-sub">14 L2 categories · 1,931 products · Whey, Creatine, Pre-Workout, Mass Gainers &amp; more</div></div>
+    <span class="tone-tag" style="background:#eef2ff;color:#4338ca">Motivational · peer-to-peer</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Overwhelmed by Whey variants (Concentrate vs Isolate vs Gainer), price-comparing with Amazon. Most have a specific goal but no product vocabulary for it — they don't know the word "Creatine," they know "something to make gains faster." The flow must speak goals, not products.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 💪 Noticed you were checking out Sports Nutrition on Hyugalife.<br><br>Quick question — what's your current fitness goal?<div class="wa-time">12:05 PM ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Build muscle &amp; bulk</span><span class="wa-btn">Lose fat &amp; tone</span><span class="wa-btn">Boost performance</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Build &amp; bulk</div><div class="val">Mass Gainers → Creatine → L-Glutamine (gut protection during high-calorie intake)</div></div>
+    <div class="mini-card"><div class="label">Lose fat &amp; tone</div><div class="val">Clean Whey / Isolate → L-Carnitine → BCAA (lean muscle preservation)</div></div>
+    <div class="mini-card"><div class="label">Boost performance</div><div class="val">Pre Workout → EAA → Creatine (strength + endurance stack)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Whey Protein</span><span class="plus">+</span><span class="pair-tag">Creatine</span><span class="reason">→ Studies show 20% more strength gains vs protein alone. Creatine saturates muscle for protein to work harder. Most gym-goers don't know this.</span></div>
+    <div class="cross-row"><span class="pair-tag">Mass Gainer</span><span class="plus">+</span><span class="pair-tag">L-Glutamine</span><span class="reason">→ High-calorie bulking diets spike gut permeability. L-Glutamine repairs intestinal lining, reducing bloating and improving absorption.</span></div>
+    <div class="cross-row"><span class="pair-tag">Pre Workout</span><span class="plus">+</span><span class="pair-tag">BCAA</span><span class="reason">→ Pre-workout provides energy before. BCAA during/after reduces muscle breakdown during training. The full arc of a workout, covered.</span></div>
+    <div class="cross-row"><span class="pair-tag">Whey Isolate</span><span class="plus">+</span><span class="pair-tag">L-Carnitine</span><span class="reason">→ Isolate maintains muscle. Carnitine converts stored fat to energy. Together = body recomp — lose fat AND keep muscle simultaneously.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Based on your goal, here's our top pick 🎯<br><div style="background:white;border-radius:8px;padding:9px;margin:7px 0;border:1px solid #e0e0e0"><div style="font-weight:700;font-size:12px">{{product_name}}</div><div style="font-size:11px;color:#555;margin:3px 0">Best for: {{goal_copy}}</div><div style="display:flex;justify-content:space-between;margin-top:4px"><span style="font-size:13px;color:#25D366;font-weight:700">₹{{price}}</span><span style="font-size:10px;color:#888">⭐ 4.5 · 2,000+ reviews</span></div></div>Most people buying this also add <strong>Creatine</strong> to their stack — it's what actually makes the protein work harder. Together: ₹{{bundle_price}} vs ₹{{individual_price}} separately 💰<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Yes, show combo</span><span class="wa-btn">Just the protein</span><span class="wa-btn">Ask a question</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 1: HEALTH FOODS -->
+<div class="panel" id="panel-1">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#ecfdf5">🥜</div>
+    <div><div class="cat-title">Health Foods &amp; Beverages</div><div class="cat-sub">7 L2 categories · Oats, Peanut Butter, Protein Bars, Dry Fruits, Healthy Beverages</div></div>
+    <span class="tone-tag" style="background:#ecfdf5;color:#065f46">Lifestyle · practical</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Unsure if "healthy food" from Hyugalife is worth the premium vs a grocery store. Often browsing casually — no urgency. The unlock: show that food alone is not a complete nutrition system. Pairing food with the right supplement closes the gap between "eating right" and actually seeing results.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 🥜 Saw you browsing our Health Foods section.<br><br>What's your daily nutrition challenge right now?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">No time for breakfast</span><span class="wa-btn">Post-workout hunger</span><span class="wa-btn">Healthy snacking</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">No time for breakfast</div><div class="val">Oats + Muesli → Peanut Butter → cross-sell Multivitamin (complete AM nutrition kit)</div></div>
+    <div class="mini-card"><div class="label">Post-workout hunger</div><div class="val">Protein Bars → Healthy Beverages → cross-sell BCAA (grab-and-go recovery pack)</div></div>
+    <div class="mini-card"><div class="label">Healthy snacking</div><div class="val">Dry Fruits + Nuts → Protein Cookies → cross-sell Omega 3 (guilt-free + heart health)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Peanut Butter</span><span class="plus">+</span><span class="pair-tag">Protein Oats</span><span class="reason">→ PB is fat-heavy protein; Oats add slow-release carbs. Together = 30g+ protein breakfast in under 5 minutes. Most customers only buy PB and miss the macro picture.</span></div>
+    <div class="cross-row"><span class="pair-tag">Protein Bars</span><span class="plus">+</span><span class="pair-tag">Hydration Drink</span><span class="reason">→ Protein bars replenish muscle substrate; electrolytes restore what sweat takes out. Without hydration, protein absorption drops 15–20%.</span></div>
+    <div class="cross-row"><span class="pair-tag">Muesli</span><span class="plus">+</span><span class="pair-tag">Multivitamin</span><span class="reason">→ Muesli covers macros. But micronutrient gaps (D3, B12, Iron) that cause fatigue don't come from food alone. This is the "why am I still tired" fix.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Your <strong>{{product}}</strong> is a great choice! 🥗<br><br>To make sure you're getting complete nutrition — pair it with <strong>{{cross_sell}}</strong>. This combo covers your protein, carbs AND micronutrients in one go 🍽️<br><br>Use <strong>HYUGA10</strong> for 10% off both!<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Shop the pair</span><span class="wa-btn">Just the one item</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 2: HAIR SKIN NAILS -->
+<div class="panel" id="panel-2">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#fdf4ff">✨</div>
+    <div><div class="cat-title">Hair, Skin &amp; Nails</div><div class="cat-sub">6 L2 categories · Biotin, Collagen, Glutathione, DHT Blockers, Skin Health</div></div>
+    <span class="tone-tag" style="background:#fdf4ff;color:#7e22ce">Aspirational · science-backed</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Spoilt for choice — Biotin vs Collagen vs Glutathione, which one first? Skeptical that internal supplements actually affect external appearance. The unlock is the "beauty stack" narrative: each supplement targets a different biological layer, and results come 2x faster with a pairing than solo.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! ✨ Noticed you exploring our Hair, Skin &amp; Nails range.<br><br>What's your #1 concern right now?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Hair fall &amp; thinning</span><span class="wa-btn">Dull skin &amp; glow</span><span class="wa-btn">Brittle nails</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Hair fall &amp; thinning</div><div class="val">Biotin + DHT Blockers → Collagen (addresses follicle growth AND structural strength)</div></div>
+    <div class="mini-card"><div class="label">Dull skin &amp; glow</div><div class="val">Glutathione → Collagen → Vitamin C (brightening trifecta — pigment + structure + antioxidant)</div></div>
+    <div class="mini-card"><div class="label">Brittle nails</div><div class="val">Biotin → Collagen → Calcium (nail keratin production from multiple angles)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Biotin</span><span class="plus">+</span><span class="pair-tag">Collagen</span><span class="reason">→ Biotin stimulates follicle growth. Collagen provides the structural protein for the hair strand itself. One grows, the other strengthens — both are needed.</span></div>
+    <div class="cross-row"><span class="pair-tag">Glutathione</span><span class="plus">+</span><span class="pair-tag">Vitamin C</span><span class="reason">→ Vitamin C is Glutathione's co-activator. Without Vit C, Gluta recycles poorly and works at 40% capacity. This is the most commonly missed pairing.</span></div>
+    <div class="cross-row"><span class="pair-tag">Collagen</span><span class="plus">+</span><span class="pair-tag">Hyaluronic Acid</span><span class="reason">→ Collagen rebuilds the dermis. Hyaluronic acid retains moisture in it. Structure without hydration = dry, tight skin. Together = visible plumping.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble"><strong>Important tip:</strong> {{product}} works best when paired with <strong>{{cross_sell}}</strong> ✨<br><br>Here's why — {{reason_copy}}. Most customers who take both see results in 6–8 weeks vs 12+ weeks solo ⏱️<br><br>Grab both for ₹{{bundle_price}}<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Get the combo</span><span class="wa-btn">Learn more</span><span class="wa-btn">Just {{product}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 3: WEIGHT MANAGEMENT -->
+<div class="panel" id="panel-3">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#fff7ed">⚖️</div>
+    <div><div class="cat-title">Weight Management</div><div class="cat-sub">6 L2 categories · Fat Burners, ACV, CLA, Green Coffee, Fiber, Meal Replacement</div></div>
+    <span class="tone-tag" style="background:#fff7ed;color:#9a3412">Empathetic · non-judgemental</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> High skepticism — been burned by ineffective weight loss products before. Also confused about what fits their current diet approach (keto, IF, calorie deficit). The unlock: reframe products from "magic solution" to "making your diet actually work." Position as a diet amplifier, not a replacement for effort.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 👋 Saw you browsing Weight Management on Hyugalife.<br><br>What's your current approach to your health goals?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Diet + calorie cut</span><span class="wa-btn">Intermittent fasting</span><span class="wa-btn">Working out regularly</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Diet + calorie cut</div><div class="val">Apple Cider Vinegar + Fiber → appetite control + slow digestion during caloric deficit</div></div>
+    <div class="mini-card"><div class="label">Intermittent fasting</div><div class="val">Green Coffee Extract + CLA → fat mobilization and oxidation during fasting window</div></div>
+    <div class="mini-card"><div class="label">Working out regularly</div><div class="val">Fat Burner + L-Carnitine → thermogenic effect + fat-to-fuel conversion during exercise</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Apple Cider Vinegar</span><span class="plus">+</span><span class="pair-tag">Fiber Supplement</span><span class="reason">→ ACV reduces hunger signals. Fiber slows gastric emptying. Together they suppress cravings for 4–5 hours — the hardest part of a calorie deficit, solved.</span></div>
+    <div class="cross-row"><span class="pair-tag">Fat Burner</span><span class="plus">+</span><span class="pair-tag">L-Carnitine</span><span class="reason">→ Fat burners mobilise stored fat (release it from cells). Carnitine is the transporter that shuttles released fat into mitochondria as fuel. Without Carnitine, mobilised fat just recirculates.</span></div>
+    <div class="cross-row"><span class="pair-tag">Green Coffee</span><span class="plus">+</span><span class="pair-tag">CLA</span><span class="reason">→ Green Coffee works on overall fat. CLA specifically targets visceral/abdominal fat. Together they address both systemic and stubborn fat simultaneously.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Since you're doing <strong>{{diet_type}}</strong>, <strong>{{product}}</strong> is a solid choice 👍<br><br>But here's what most people miss — adding <strong>{{cross_sell}}</strong> means {{product}} works 2x better because {{mechanism}}.<br><br>The combo pays for itself in skipped cheat meals 😄<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Show me the combo</span><span class="wa-btn">Tell me more</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 4: WOMEN'S HEALTH -->
+<div class="panel" id="panel-4">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#fff0f6">🌸</div>
+    <div><div class="cat-title">Women's Health</div><div class="cat-sub">6 L2 categories · PCOS, Pregnancy, Period Health, Menopause, Women's Multivitamins, Breastfeeding</div></div>
+    <span class="tone-tag" style="background:#fff0f6;color:#9d174d">Warm · sisterly · non-clinical</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Category feels too broad and clinical. Women don't identify with "hormonal imbalance supplement" — they identify with the feeling: "tired all the time," "my skin is breaking out," "my cycle is irregular." The unlock is leading with life stage and feeling, not diagnosis. Also: this category has the highest cross-sell potential because most conditions (PCOS, pregnancy) create cascading nutritional deficiencies.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 🌸 Saw you exploring our Women's Health range. We know every woman's journey is different — let us help find what's right for you.<br><br>What's been on your mind lately?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Periods &amp; hormones</span><span class="wa-btn">Pregnancy &amp; fertility</span><span class="wa-btn">Energy &amp; daily wellness</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Periods &amp; hormones</div><div class="val">PCOS/PCOD support → Iron + Vit B complex (heavy periods → iron loss → fatigue cycle)</div></div>
+    <div class="mini-card"><div class="label">Pregnancy &amp; fertility</div><div class="val">Prenatal supplements → DHA Omega 3 + Folate (neural tube + brain development essentials)</div></div>
+    <div class="mini-card"><div class="label">Energy &amp; daily wellness</div><div class="val">Women's Multivitamin → Collagen + Biotin (inner glow + strength — the complete self-care stack)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">PCOS Support</span><span class="plus">+</span><span class="pair-tag">Iron + Vit B</span><span class="reason">→ PCOS causes heavier, longer periods → significant iron loss → chronic fatigue. The PCOS supplement manages hormones; Iron + B12 addresses the downstream fatigue that makes PCOS feel debilitating. Both are needed.</span></div>
+    <div class="cross-row"><span class="pair-tag">Prenatal Vitamin</span><span class="plus">+</span><span class="pair-tag">DHA Omega 3</span><span class="reason">→ Most prenatal vitamins don't contain DHA. Yet DHA is the #1 nutrient for fetal brain development. This is the single most impactful cross-sell in the Women's Health category.</span></div>
+    <div class="cross-row"><span class="pair-tag">Women's Multivitamin</span><span class="plus">+</span><span class="pair-tag">Magnesium</span><span class="reason">→ 70% of Indian women are Magnesium deficient, yet most multivitamins don't include adequate Mg. Deficiency causes period cramps, anxiety, poor sleep — all common complaints. This pairing addresses the gap most women don't know they have.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">{{product}} is a great first step 🌸<br><br>One thing most women don't realise — <strong>{{cross_sell}}</strong> addresses {{gap_reason}}, which {{product}} alone can't cover.<br><br>Together, they're the complete support your body actually needs. And it costs less than one salon visit a month 💕<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Get the full stack</span><span class="wa-btn">Tell me more</span><span class="wa-btn">Just {{product}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 5: AYURVEDIC -->
+<div class="panel" id="panel-5">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#ecfdf5">🌿</div>
+    <div><div class="cat-title">Ayurvedic &amp; Herbal Supplements</div><div class="cat-sub">6 L2 categories · Ashwagandha, Shilajit, Amla, Triphala, Turmeric, Herbs</div></div>
+    <span class="tone-tag" style="background:#ecfdf5;color:#14532d">Grounded · wisdom-led</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Know the herbs (Ashwagandha, Shilajit) from word of mouth but unsure which brand or form (tablet / powder / gummy / liquid). Also brand fatigue — seen dozens of Ashwagandha options everywhere. The unlock is bridging ancient herbs with modern science: pair a trusted herb with a science-backed supplement that makes the herb work better. This builds credibility AND raises AOV.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 🌿 Saw you browsing our Ayurvedic supplements. Great choice — these herbs have been trusted for centuries.<br><br>What are you hoping to support?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Stress &amp; sleep</span><span class="wa-btn">Energy &amp; strength</span><span class="wa-btn">Immunity &amp; gut</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Stress &amp; sleep</div><div class="val">Ashwagandha → Magnesium (Ashwagandha lowers cortisol, Mg deepens sleep quality — the stress relief duo)</div></div>
+    <div class="mini-card"><div class="label">Energy &amp; strength</div><div class="val">Shilajit → CoQ10 (Shilajit delivers fulvic acid to mitochondria, CoQ10 amplifies ATP energy output)</div></div>
+    <div class="mini-card"><div class="label">Immunity &amp; gut</div><div class="val">Amla + Turmeric → Pre &amp; Probiotics (natural Vit C + anti-inflammatory + gut lining repair)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Ashwagandha</span><span class="plus">+</span><span class="pair-tag">Magnesium</span><span class="reason">→ Ashwagandha reduces cortisol (the stress hormone). But high cortisol depletes Magnesium. Without restoring Mg, the nervous system can't fully downregulate. Together: stress drops AND sleep quality improves. Apart: partial effect.</span></div>
+    <div class="cross-row"><span class="pair-tag">Shilajit</span><span class="plus">+</span><span class="pair-tag">CoQ10</span><span class="reason">→ Shilajit's fulvic acid transports minerals into the mitochondrial membrane. CoQ10 is the molecule inside the mitochondria that converts those minerals to ATP. One is the delivery system, the other is the engine.</span></div>
+    <div class="cross-row"><span class="pair-tag">Amla</span><span class="plus">+</span><span class="pair-tag">Vitamin C (isolated)</span><span class="reason">→ Amla contains natural Vitamin C bound to bioflavonoids — excellent bioavailability. But for acute immune response, isolated Vit C at higher doses adds coverage Amla alone can't reach. The best of both worlds.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">{{product}} has been used in Ayurveda for centuries to help with {{benefit}} 🌿<br><br>Modern research now shows it works even better when combined with <strong>{{cross_sell}}</strong> — {{mechanism_plain}}.<br><br>This is exactly the stack our nutritionists recommend to customers with your goal!<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Get the stack</span><span class="wa-btn">Chat with nutritionist</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 6: SEXUAL HEALTH -->
+<div class="panel" id="panel-6">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#fff0f6">🛡️</div>
+    <div><div class="cat-title">Sexual Health</div><div class="cat-sub">4 L2 categories · For Her, For Him, Intimacy Supplements, Devices — high drop-off, sensitive</div></div>
+    <span class="tone-tag" style="background:#fff0f6;color:#9d174d">Discreet · benefit-language only</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Highest drop-off rate across all L1 categories. Embarrassment, privacy fear, and stigma are the primary barriers. Critical rule: the WhatsApp template must NEVER mention the category name. Use "wellness" and "vitality" language exclusively. The cross-sell unlock: position these as general confidence + energy products — the intimate benefits are a natural outcome, not the lead.</div>
+  <div class="section-title">MSG 1 — intent discovery (discreet · outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 👋 You were browsing our wellness range on Hyugalife. We have some of India's most trusted vitality supplements that most people don't know about.<br><br>What matters most to you right now?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Energy &amp; confidence</span><span class="wa-btn">Hormonal balance</span><span class="wa-btn">Relationship wellness</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Energy &amp; confidence (him)</div><div class="val">Testosterone Booster → Shilajit + Zinc + Vit D3 (men's vitality stack — deficiency-first approach)</div></div>
+    <div class="mini-card"><div class="label">Hormonal balance (her)</div><div class="val">Shatavari → Women's Multivitamin + Ashwagandha (hormonal + mood + energy trifecta)</div></div>
+    <div class="mini-card"><div class="label">Relationship wellness</div><div class="val">Intimacy supplements → Devices (benefit-language progressive upsell)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Testosterone Booster</span><span class="plus">+</span><span class="pair-tag">Zinc + Vit D3</span><span class="reason">→ 80% of Indian men are Vitamin D deficient. Vit D is a direct precursor to testosterone synthesis. Without restoring D3, no test booster can reach full efficacy. Zinc prevents testosterone-to-estrogen conversion. This is the most clinically important stack in the category.</span></div>
+    <div class="cross-row"><span class="pair-tag">Shilajit</span><span class="plus">+</span><span class="pair-tag">Ashwagandha</span><span class="reason">→ Classic Ayurvedic vitality duo. Shilajit provides mitochondrial energy. Ashwagandha reduces cortisol (which suppresses testosterone). Together: energy goes up AND the hormonal environment supports it.</span></div>
+    <div class="cross-row"><span class="pair-tag">Shatavari</span><span class="plus">+</span><span class="pair-tag">Women's Multivitamin</span><span class="reason">→ Shatavari works on hormonal pathways. But nutritional deficiencies (Iron, B12, D3) cause the fatigue and low mood that undermine intimacy. The multivitamin addresses the root-cause layer that Shatavari alone can't.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy (fully discreet)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">{{product}} is one of our most trusted picks for {{benefit_language}} 💪<br><br>Here's a tip from our nutritionist — most people see much faster results when they also take <strong>{{cross_sell}}</strong>, because {{plain_mechanism}}.<br><br>Both together: ₹{{bundle_price}} · ships in discreet packaging 📦<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Add to cart</span><span class="wa-btn">Chat privately</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 7: FITNESS GEAR -->
+<div class="panel" id="panel-7">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#fffbeb">🏋️</div>
+    <div><div class="cat-title">Fitness Gears &amp; Accessories</div><div class="cat-sub">5 L2 categories · Resistance Bands, Braces, Equipment, Shakers, Bottles</div></div>
+    <span class="tone-tag" style="background:#fffbeb;color:#92400e">Active · goal-oriented</span>
+  </div>
+  <div class="insight-box"><strong>Why they drop off:</strong> Price-comparing with Amazon/Flipkart — Hyugalife can't win on gear price alone. The strategic unlock here is unique to Hyugalife's position as a supplement store: the gear buyer is a guaranteed nutrition prospect. A resistance band buyer needs protein. A knee brace buyer needs Glucosamine. The cross-sell from physical gear to nutritional support is the most natural bridge in the entire catalogue.</div>
+  <div class="section-title">MSG 1 — intent discovery (outbound template)</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Hey <strong>{{first_name}}</strong>! 🏋️ Saw you checking out Fitness Accessories on Hyugalife.<br><br>What kind of workout setup are you building?<div class="wa-time">12:05 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn">Home workout setup</span><span class="wa-btn">Gym training</span><span class="wa-btn">Running &amp; outdoor</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">L2 routing map</div>
+  <div class="grid3">
+    <div class="mini-card"><div class="label">Home workout setup</div><div class="val">Resistance Bands + Yoga Mat → cross-sell Whey Protein + BCAA (physical setup + nutritional setup together)</div></div>
+    <div class="mini-card"><div class="label">Gym training</div><div class="val">Shakers + Gym Gloves + Wraps → cross-sell Pre-Workout starter pack (the complete gym kit)</div></div>
+    <div class="mini-card"><div class="label">Running &amp; outdoor</div><div class="val">Hydration Bottles + Knee Braces → cross-sell Electrolytes + Glucosamine + Omega 3 (endurance + joint care)</div></div>
+  </div>
+  <div class="section-title">Cross-sell pairings — "unlock more value" rationale</div>
+  <div class="cross-card">
+    <div class="cross-row"><span class="pair-tag">Resistance Bands</span><span class="plus">+</span><span class="pair-tag">Whey Protein</span><span class="reason">→ Bands create the muscular stimulus. Protein provides the amino acids for repair. Without adequate protein intake, resistance training creates micro-tears that don't repair — this is why people work out for months and "don't see results."</span></div>
+    <div class="cross-row"><span class="pair-tag">Gym Shaker</span><span class="plus">+</span><span class="pair-tag">Pre-Workout Starter Pack</span><span class="reason">→ The shaker is literally the delivery mechanism for a pre-workout drink. Bundling them is a natural cart completion play with 0 selling effort. Highest conversion potential in this category.</span></div>
+    <div class="cross-row"><span class="pair-tag">Knee Brace / Support</span><span class="plus">+</span><span class="pair-tag">Glucosamine + Omega 3</span><span class="reason">→ A brace provides external mechanical support. Glucosamine rebuilds joint cartilage from within. Omega 3 reduces joint inflammation. This is the only complete knee care protocol — external + internal + anti-inflammatory together.</span></div>
+  </div>
+  <div class="section-title">MSG 3 — cross-sell hook copy</div>
+  <div class="wa-msg-wrap">
+    <div class="wa-row">
+      <div class="wa-avatar">H</div>
+      <div style="flex:1">
+        <div class="wa-bubble">Great pick on the <strong>{{gear_product}}</strong>! 🏋️<br><br>One thing worth knowing — {{gear}} handles the physical side, but without <strong>{{nutrition_cross_sell}}</strong>, your body can't recover fast enough to see real progress 💡<br><br>Add both for ₹{{bundle_price}} — complete your setup today!<div class="wa-time">12:07 ✓✓</div></div>
+        <div class="wa-btns"><span class="wa-btn primary">Complete my setup</span><span class="wa-btn">Just the gear</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Hyugalife · WhatsApp Re-engagement Strategy · All L1 Categories</span>
+  <span>Health Supplements (L1 already built separately) · Meta-compliant · LimeChat</span>
+</div>
+
+</div>
+
+<script>
+const colors=['#6366f1','#059669','#a855f7','#ea580c','#ec4899','#16a34a','#db2777','#d97706'];
+document.querySelectorAll('.tab').forEach((tab,i)=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach((t,j)=>{
+      t.classList.remove('active');
+      t.style.background='white';
+      t.style.color='#555';
+      t.style.borderColor='#e5e5e0';
+    });
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.style.background=colors[i];
+    tab.style.color='white';
+    tab.style.borderColor=colors[i];
+    document.getElementById('panel-'+i).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
