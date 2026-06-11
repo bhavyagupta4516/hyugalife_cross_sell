@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyugalife — WhatsApp Drop-off Re-engagement Flows · All Categories</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;background:#f2f2ef;color:#1a1a1a;font-size:13px;min-height:100vh}
+/* ── HEADER ── */
+.site-header{background:white;border-bottom:1px solid #e8e8e4;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:18px;font-weight:700}.logo span{color:#7c3aed}
+.header-meta{font-size:11px;color:#888}
+.header-badge{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600}
+/* ── TABS ── */
+.tabs-wrap{background:white;border-bottom:1px solid #e8e8e4;padding:0 28px;overflow-x:auto;display:flex;gap:2px}
+.tab-btn{padding:12px 16px;font-size:12px;font-weight:500;color:#666;border:none;background:none;cursor:pointer;border-bottom:2.5px solid transparent;white-space:nowrap;transition:all .15s}
+.tab-btn:hover{color:#1a1a1a}
+.tab-btn.active{font-weight:600;border-bottom-color:var(--cat-color)}
+/* ── PANELS ── */
+.panel{display:none;padding:24px 28px;max-width:1200px;margin:0 auto}
+.panel.active{display:block}
+/* ── CAT HEADER ── */
+.cat-header{background:white;border-radius:12px;padding:20px 24px;margin-bottom:16px;display:flex;align-items:center;gap:14px;border:1px solid #e8e8e4}
+.cat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.cat-title{font-size:17px;font-weight:600;margin-bottom:3px}
+.cat-sub{font-size:11px;color:#888}
+.tone-pill{margin-left:auto;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;white-space:nowrap}
+/* ── INSIGHT ── */
+.insight{border-left:3px solid #3b82f6;background:#eff6ff;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#1e40af;line-height:1.65}
+.insight strong{color:#1e3a8a}
+/* ── TWO-COLUMN LAYOUT ── */
+.two-col{display:grid;grid-template-columns:400px 1fr;gap:16px;align-items:start}
+/* ── FLOW SIMULATOR ── */
+.sim-wrap{background:white;border-radius:12px;border:1px solid #e8e8e4;overflow:hidden}
+.sim-header{background:#075E54;color:white;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.sim-avatar{width:36px;height:36px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0}
+.sim-name{font-size:13px;font-weight:600}
+.sim-status{font-size:11px;color:#b2dfdb;margin-top:1px}
+.sim-reset{margin-left:auto;background:rgba(255,255,255,.15);border:none;color:white;border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer}
+.sim-reset:hover{background:rgba(255,255,255,.25)}
+.chat-area{background:#ECE5DD url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='%23ECE5DD'/%3E%3C/svg%3E") ;padding:16px;min-height:320px;max-height:520px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.msg-row{display:flex;align-items:flex-start;gap:8px}
+.bubble-wrap{max-width:85%}
+.bubble{background:white;border-radius:0 10px 10px 10px;padding:9px 12px;font-size:12px;line-height:1.55;color:#111;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.bubble strong{font-weight:600}
+.bubble-meta{font-size:10px;color:#888;text-align:right;margin-top:3px}
+.btns-wrap{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.flow-btn{border:1px solid #25D366;border-radius:18px;padding:6px 14px;font-size:11.5px;color:#00A884;background:white;cursor:pointer;text-align:center;transition:all .15s;font-weight:500}
+.flow-btn:hover{background:#f0fdf4}
+.flow-btn.selected{background:#dcf8c6;border-color:#128c7e;color:#128c7e;font-weight:600;cursor:default}
+.flow-btn.disabled{opacity:.4;cursor:default;pointer-events:none}
+.flow-btn.cta{background:#25D366;color:white;border-color:#25D366}
+.flow-btn.cta:hover{background:#20b858}
+.bubble-green{background:#DCF8C6;border-radius:0 10px 10px 10px}
+.step-label{font-size:10px;color:#aaa;text-align:center;padding:4px 0;font-style:italic}
+.product-card{background:#fafafa;border-radius:8px;padding:9px 11px;margin:6px 0;border:1px solid #e8e8e4}
+.product-card .pname{font-weight:700;font-size:12px;color:#111}
+.product-card .pdesc{font-size:11px;color:#666;margin:2px 0}
+.product-card .prow{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.product-card .pprice{font-size:13px;font-weight:700;color:#25D366}
+.product-card .prating{font-size:10px;color:#888}
+/* ── TEMPLATES ── */
+.tmpl-section{display:flex;flex-direction:column;gap:12px}
+.tmpl-card{background:white;border-radius:12px;border:1px solid #e8e8e4;overflow:hidden}
+.tmpl-card-header{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #f0efeb}
+.tmpl-badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;padding:2px 7px}
+.badge-template{background:#fef3c7;color:#92400e}
+.badge-session{background:#ecfdf5;color:#065f46}
+.badge-fallback{background:#fef2f2;color:#991b1b}
+.tmpl-name{font-size:11px;color:#888;margin-left:auto}
+.tmpl-body{padding:12px 14px;font-size:12px;line-height:1.65}
+.tmpl-body-text{background:#fafafa;border:1px solid #f0efeb;border-radius:6px;padding:10px 12px;font-size:12px;white-space:pre-wrap;color:#333;font-family:inherit}
+.var-tag{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:600}
+.tmpl-btns{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.tmpl-btn-tag{border:1px solid #d1d5db;border-radius:16px;padding:4px 11px;font-size:11px;color:#374151;background:white}
+.tmpl-row{margin-bottom:6px}
+.tmpl-label{font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.cross-section{background:#f8f5ff;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:11.5px;color:#4c1d95}
+.cross-section strong{color:#3b0764}
+/* ── BRANCHES ROW ── */
+.branches-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.branch-mini{background:white;border-radius:8px;border:1px solid #e8e8e4;padding:10px 12px}
+.branch-mini .bm-trigger{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.branch-mini .bm-l2{font-size:11px;color:#555;line-height:1.55;margin-bottom:6px}
+/* ── FLOW RULES ── */
+.flow-rules{background:white;border-radius:8px;border:1px solid #e8e8e4;padding:12px 16px;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11.5px;color:#555}
+.rule-item{display:flex;align-items:flex-start;gap:6px}
+.rule-dot{width:5px;height:5px;border-radius:50%;background:#d1d5db;flex-shrink:0;margin-top:5px}
+/* ── RESPONSIVE ── */
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.branches-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div>
+    <div class="logo">Hyuga<span>life</span></div>
+    <div class="header-meta">WhatsApp Drop-off Re-engagement · Interactive Flow Builder</div>
+  </div>
+  <div class="header-badge">8 L1 Categories · Full Template Library</div>
+</div>
+
+<div class="tabs-wrap" id="tabsWrap"></div>
+<div id="panelsWrap"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────────
+const CATS = [
+{
+  key:'sports', name:'Sports Nutrition', emoji:'💪',
+  color:'#6366f1', bg:'#eef2ff', textColor:'#4338ca',
+  meta:'14 L2 categories · Whey, Creatine, Pre-Workout, Mass Gainers, BCAA, EAA',
+  tone:'Motivational · peer-to-peer',
+  dropoff:'Overwhelmed by Whey variants (Concentrate vs Isolate vs Gainer). Price-comparing with Amazon. Most visitors have a fitness goal but no product vocabulary — they know "something to build muscle" not "Creatine monohydrate." The flow must lead with goals, not product names.',
+  msg1:{
+    tname:'hyugalife_sports_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Sports Nutrition',
+    body:"Hey {{1}}! 💪 Noticed you checking out Sports Nutrition on Hyugalife. Still searching for the right supplement?\n\nTell us your fitness goal — we'll find your perfect match in 2 taps!",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Build muscle & bulk','Lose fat & tone','Boost performance']
+  },
+  branches:[
+    {
+      trigger:'Build muscle & bulk', color:'#6366f1',
+      l2:'Mass Gainers · Whey Protein · Creatine · L-Glutamine',
+      msg2:{
+        tname:'Session message — no approval needed', type:'SESSION',
+        body:"Let's get specific! 💪 For building muscle, which stage are you at?",
+        btns:['Complete beginner','6+ months training','Advanced lifter']
+      },
+      msg3:{
+        tname:'Session message — no approval needed', type:'SESSION',
+        body:"Perfect! Here's your bulking starter stack 🎯\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: Building lean muscle with minimal fat gain\n\n💡 85% of customers who buy this also add Creatine — clinically proven to boost strength by 20%. Both together: ₹{{bundle_price}} vs ₹{{individual_price}} separately.\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Whey Protein + Creatine → 20% more strength gains',
+        btns:['Get the combo','Just the protein','Ask a question']
+      }
+    },
+    {
+      trigger:'Lose fat & tone', color:'#0891b2',
+      l2:'Clean Whey Protein · Whey Isolate · L-Carnitine · BCAA',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Smart goal! 🔥 How are you currently training?",
+        btns:['Gym workouts','Home workouts','Cardio & running']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For fat loss with your training style, here's your ideal stack 🔥\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: Lean muscle while cutting body fat\n\n💡 Pair with L-Carnitine for 40% faster fat burn — it converts stored fat into workout fuel. Bundle: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Whey Isolate + L-Carnitine → fat burn while preserving lean muscle',
+        btns:['Show the combo','Just the whey','Tell me more']
+      }
+    },
+    {
+      trigger:'Boost performance', color:'#d97706',
+      l2:'Pre Workout · EAA · Creatine · Sports Drinks · Hydration',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Let's level you up! ⚡ What's your main performance focus?",
+        btns:['Energy & stamina','Faster recovery','Strength & power']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For peak performance, this is your go-to stack ⚡\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: Explosive energy + faster recovery\n\n💡 Most athletes pair this with EAA — it reduces muscle breakdown mid-workout by 30% so you push harder, longer. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Pre Workout + EAA → energy before, recovery during',
+        btns:['Get the duo','Just this one','Chat with expert']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_sports_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! Still looking for the right sports supplement? 💪\n\nOur best-seller this week:\n{{bestseller_name}} · ⭐{{rating}} · {{reviews}}+ reviews\n\nUse HYUGA10 for 10% off — valid for 24 hours!",
+    btns:['Shop now','Browse all']
+  }
+},
+{
+  key:'foods', name:'Health Foods & Beverages', emoji:'🥜',
+  color:'#059669', bg:'#ecfdf5', textColor:'#065f46',
+  meta:'7 L2 categories · Peanut Butter, Oats, Protein Bars, Muesli, Dry Fruits, Beverages',
+  tone:'Lifestyle · practical · everyday',
+  dropoff:'Users aren\'t sure if Hyugalife health foods are worth the premium vs grocery alternatives. Purchase intent is low — mostly curiosity browsing. The strategic unlock: show that food alone isn\'t a complete nutrition system. The supplement cross-sell fills micronutrient gaps that even "eating right" misses.',
+  msg1:{
+    tname:'hyugalife_foods_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Health Foods',
+    body:"Hey {{1}}! 🥜 Saw you browsing Health Foods & Beverages on Hyugalife.\n\nWhat's your daily nutrition challenge right now?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Skip breakfast often','Post-workout hunger','Healthy snacking']
+  },
+  branches:[
+    {
+      trigger:'Skip breakfast often', color:'#059669',
+      l2:'Oats & Muesli · Peanut Butter · Protein Granola · Healthy Beverages',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Quick breakfasts sorted! 🌅 What matters most to you in a morning meal?",
+        btns:['High protein','Low calorie','Filling & tasty']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"Here's your perfect busy-morning setup 🌅\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Complete the nutrition picture — pair with a Multivitamin. Even the best breakfast misses B12, D3 and Iron. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'High-protein breakfast + Multivitamin → complete morning nutrition',
+        btns:['Shop the pair','Just the food','Tell me more']
+      }
+    },
+    {
+      trigger:'Post-workout hunger', color:'#0284c7',
+      l2:'Protein Bars & Snacks · Healthy Beverages · Protein Granola',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Smart — recovery nutrition is critical! 💪 What type of workout do you do?",
+        btns:['Weight training','Cardio / running','Yoga / low-intensity']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For your {{workout_type}} recovery, this is your go-to 💪\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Pair with a Hydration & Electrolyte drink — without replenishing electrolytes, protein absorption drops 15-20%. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Protein Bar + Electrolytes → complete recovery kit',
+        btns:['Get recovery kit','Just the bar','Ask a question']
+      }
+    },
+    {
+      trigger:'Healthy snacking', color:'#d97706',
+      l2:'Dry Fruits & Nuts · Protein Cookies · Makhana · Healthy Chips',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Great habit! 🍎 What kind of snacks do you usually reach for?",
+        btns:['Sweet & chocolatey','Savoury & crunchy','Natural & fruity']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"Here's your guilt-free snack pick 🍎\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Add Omega 3 to your daily routine — healthy snackers rarely get enough from food. It covers heart health, brain function and inflammation. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Healthy snacks + Omega 3 → nutrition from food AND supplements',
+        btns:['Shop the pair','Just the snack','See more options']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_foods_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! 🥜 Still looking for healthy food options?\n\nThis week's top seller: {{bestseller_name}} · ⭐{{rating}}\n\nFree delivery above ₹499 · Use HYUGA10 for 10% off!",
+    btns:['Shop now','Browse all']
+  }
+},
+{
+  key:'hsn', name:'Hair, Skin & Nails', emoji:'✨',
+  color:'#a855f7', bg:'#fdf4ff', textColor:'#7e22ce',
+  meta:'6 L2 categories · Biotin, Collagen, Glutathione, DHT Blockers, Skin Health',
+  tone:'Aspirational · science-backed · results-focused',
+  dropoff:'Too many similar-looking options — Biotin, Collagen, Glutathione all seem to promise the same thing. High skepticism about internal supplements affecting external appearance. The unlock is the "beauty stack" story: each targets a different biological layer and results come 2× faster when paired.',
+  msg1:{
+    tname:'hyugalife_hsn_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Beauty From Within',
+    body:"Hey {{1}}! ✨ Noticed you exploring our Hair, Skin & Nails range on Hyugalife. We know the options can be overwhelming!\n\nWhat's your #1 concern right now?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Hair fall & thinning','Dull skin & glow','Brittle nails']
+  },
+  branches:[
+    {
+      trigger:'Hair fall & thinning', color:'#a855f7',
+      l2:'Biotin · Hair Vitamins & DHT Blockers · Collagen · Other Beauty',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Let's target that hair fall! 💆 How would you describe it?",
+        btns:['Recent & sudden','Gradual over time','Thinning all over']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{hair_type}} hair fall, here's your starter fix 💆\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Biotin grows. Collagen strengthens. Without both, you're solving half the problem — customers who combine them see results in 6-8 weeks vs 12+ weeks solo. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Biotin + Collagen → follicle growth AND strand strength',
+        btns:['Get both','Just Biotin','Why do I need both?']
+      }
+    },
+    {
+      trigger:'Dull skin & glow', color:'#ec4899',
+      l2:'Glutathione · Collagen · Skin Health Supplements · Vitamin C',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Let's find your glow! ✨ What's your main skin concern?",
+        btns:['Pigmentation & spots','Dullness & uneven tone','Ageing & fine lines']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{skin_concern}}, here's your glow starter 🌟\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Critical tip: Glutathione only works at 40% capacity without Vitamin C — Vit C is its activator. Most people take Gluta alone and wonder why results are slow. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Glutathione + Vitamin C → Vit C is Gluta\'s co-activator (40% capacity without it)',
+        btns:['Get the combo','Just Glutathione','Tell me why']
+      }
+    },
+    {
+      trigger:'Brittle nails', color:'#0891b2',
+      l2:'Biotin · Collagen · Calcium · Other Beauty Supplements',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Let's strengthen those nails! 💅 How do they usually break?",
+        btns:['Peel & flake','Break from the base','Weak & thin overall']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{nail_type}} nails, here's your repair kit 💅\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Biotin builds nail keratin. Collagen provides the structural matrix underneath. Together they address nail strength from the inside out. Both: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Biotin + Collagen → nail keratin production AND structural matrix repair',
+        btns:['Get the pair','Just Biotin','See all nail picks']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_hsn_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! ✨ Still exploring Hair, Skin & Nails solutions?\n\nThis week's bestseller: {{bestseller_name}} · ⭐{{rating}} · {{reviews}}+ happy customers\n\nUse HYUGA10 for 10% off · ships in 2-4 hours!",
+    btns:['Shop now','See all options']
+  }
+},
+{
+  key:'weight', name:'Weight Management', emoji:'⚖️',
+  color:'#ea580c', bg:'#fff7ed', textColor:'#9a3412',
+  meta:'6 L2 categories · Fat Burners, Apple Cider Vinegar, CLA, Green Coffee, Fiber, Meal Replacement',
+  tone:'Empathetic · non-judgemental · science-first',
+  dropoff:'Highest skepticism category — users have been burned by ineffective products before. Confused about what fits their current diet (keto, IF, calorie deficit). The unlock: reframe from "magic pill" to "your diet amplifier." Position as tools that make their existing discipline work harder, not a replacement for effort.',
+  msg1:{
+    tname:'hyugalife_weight_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Weight Management',
+    body:"Hey {{1}}! 👋 Saw you browsing Weight Management on Hyugalife. We know there are endless options — let us cut through the noise.\n\nWhat's your current approach to your health goals?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Diet + calorie cut','Intermittent fasting','Exercise regularly']
+  },
+  branches:[
+    {
+      trigger:'Diet + calorie cut', color:'#ea580c',
+      l2:'Apple Cider Vinegar · Fiber Supplements · Meal Replacements · Fat Burners',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Discipline respected! 🥗 What's your biggest challenge with dieting?",
+        btns:['Hunger & cravings','Slow metabolism','Stubborn belly fat']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For your calorie-cut approach, here's what actually works 🥗\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Pair with a Fiber supplement — it slows gastric emptying so you feel full for 4-5 hours. ACV + Fiber together suppress the cravings that break most diets. Bundle: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Apple Cider Vinegar + Fiber → appetite control for 4-5 hours',
+        btns:['Get both','Just this one','How does it work?']
+      }
+    },
+    {
+      trigger:'Intermittent fasting', color:'#7c3aed',
+      l2:'Green Coffee Extract · CLA · Fat Burners · Fiber Supplements',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"IF is powerful! ⏱️ What's your fasting window?",
+        btns:['16:8 daily','5:2 weekly','Just starting out']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For your {{fasting_type}} routine, here's the perfect supplement ⏱️\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Add CLA to your stack — it specifically targets visceral/belly fat during the fasting window. Green Coffee + CLA attack fat from two different pathways. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Green Coffee + CLA → thermogenic + fat cell shrinkage (belly fat specific)',
+        btns:['Get the combo','Just this one','Tell me more']
+      }
+    },
+    {
+      trigger:'Exercise regularly', color:'#059669',
+      l2:'Fat Burners · L-Carnitine · CLA · Green Coffee Extract',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Respect the consistency! 🏃 What type of exercise do you do?",
+        btns:['Cardio focused','Weight training','Mixed training']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{exercise_type}}, here's the fat-loss stack that works 🏃\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 This works best paired with L-Carnitine — the fat burner mobilises stored fat; L-Carnitine shuttles it into your mitochondria as fuel. Without Carnitine, mobilised fat just recirculates. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Fat Burner + L-Carnitine → mobilise fat AND convert it to energy',
+        btns:['Get the stack','Just the burner','How does it work?']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_weight_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! 👋 Still exploring your weight management options?\n\nOur most trusted pick this week:\n{{bestseller_name}} · ⭐{{rating}} · {{reviews}}+ verified buyers\n\nUse HYUGA10 for 10% off — limited period!",
+    btns:['Shop now','See all options']
+  }
+},
+{
+  key:'women', name:"Women's Health", emoji:'🌸',
+  color:'#ec4899', bg:'#fff0f6', textColor:'#9d174d',
+  meta:'6 L2 categories · PCOS, Pregnancy, Period Health, Menopause, Multivitamins, Breastfeeding',
+  tone:'Warm · sisterly · non-clinical language',
+  dropoff:'The category feels too broad and clinical — women don\'t identify with "hormonal supplement." They identify with the feeling: always tired, skin breaking out, irregular cycle. The unlock: lead with life stage and lived experience, not diagnosis. Highest cross-sell potential in the entire catalogue — most women\'s health conditions create cascading nutritional deficiencies.',
+  msg1:{
+    tname:'hyugalife_women_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Women\'s Health',
+    body:"Hey {{1}}! 🌸 Saw you exploring our Women's Health range. Every woman's journey is different — let us help you find what's right for you.\n\nWhat's been on your mind lately?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Periods & hormones','Pregnancy support','Energy & wellness']
+  },
+  branches:[
+    {
+      trigger:'Periods & hormones', color:'#ec4899',
+      l2:'PCOS/PCOD Support · Period Care · Hormonal Balance · Women\'s Multivitamins',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Thank you for sharing 🌸 What's bothering you most?",
+        btns:['Irregular cycles','PCOS / PCOD','Heavy & painful periods']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{concern}}, here's what we recommend 🌸\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Here's what most women miss — PCOS causes heavier periods → iron loss → fatigue. The PCOS supplement manages hormones but Iron + Vit B addresses the downstream exhaustion. Together they're the complete fix. Bundle: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'PCOS Support + Iron + Vit B → hormones AND downstream fatigue from iron loss',
+        btns:['Get the full stack','Just this one','Talk to expert']
+      }
+    },
+    {
+      trigger:'Pregnancy support', color:'#7c3aed',
+      l2:'Prenatal Vitamins · Folate · DHA Omega 3 · Pregnancy Care',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"We're here for you every step 💜 Which stage are you at?",
+        btns:['Trying to conceive','Currently pregnant','Post-delivery care']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For the {{stage}} stage, here's your essential support 💜\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Most prenatal vitamins don't contain DHA — yet it's the #1 nutrient for your baby's brain development. Adding Omega 3 (DHA) to your prenatal is the single most impactful thing you can do. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Prenatal + DHA Omega 3 → prenatal covers minerals; DHA covers brain development (missing from most prenatals)',
+        btns:['Get both','Just prenatal','Speak to nutritionist']
+      }
+    },
+    {
+      trigger:'Energy & wellness', color:'#059669',
+      l2:'Women\'s Multivitamins · Collagen · Biotin · Magnesium',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Let's boost that energy! 🌿 What's dragging you down?",
+        btns:['Always tired','Skin & hair changes','Mood & stress']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{issue}}, here's your daily wellness foundation 🌿\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 70% of Indian women are Magnesium deficient — it causes fatigue, period cramps and poor sleep. Most multivitamins don't have enough Mg. Adding it separately closes the most common gap. Both: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:"Women's Multivitamin + Magnesium → 70% of Indian women are Mg deficient; it's in almost no multivitamins",
+        btns:["Get the pair","Just the multivit","Why Magnesium?"]
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_women_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! 🌸 Still exploring Women's Health options?\n\nThis week's most loved pick:\n{{bestseller_name}} · ⭐{{rating}} · {{reviews}}+ women trust it\n\nUse HYUGA10 for 10% off · discreet packaging!",
+    btns:['Shop now','Browse all']
+  }
+},
+{
+  key:'ayur', name:'Ayurvedic & Herbal', emoji:'🌿',
+  color:'#16a34a', bg:'#f0fdf4', textColor:'#14532d',
+  meta:'6 L2 categories · Ashwagandha, Shilajit, Amla, Triphala, Turmeric, Herbs',
+  tone:'Grounded · wisdom-led · bridges ancient & modern',
+  dropoff:'Users know the herbs (Ashwagandha, Shilajit) from word of mouth but don\'t know which brand, which form (tablet/powder/gummy/liquid). Also brand fatigue — they\'ve seen Ashwagandha everywhere. The unlock: bridge traditional herbs with modern science supplements that amplify the herb\'s mechanism. Builds credibility AND raises AOV.',
+  msg1:{
+    tname:'hyugalife_ayur_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Ayurvedic Supplements',
+    body:"Hey {{1}}! 🌿 Saw you browsing our Ayurvedic supplements. These herbs have been trusted for thousands of years — and modern science is finally catching up!\n\nWhat are you hoping to support?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Stress & sleep','Energy & strength','Immunity & gut']
+  },
+  branches:[
+    {
+      trigger:'Stress & sleep', color:'#6366f1',
+      l2:'Ashwagandha · Melatonin · Brahmi · Magnesium',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Nature has a solution for this! 🧘 What's affecting you more right now?",
+        btns:["Can't sleep well","Always stressed","Anxious & restless"]
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{issue}}, here's your natural stress + sleep solution 🧘\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Ashwagandha reduces cortisol (the stress hormone). But cortisol depletion also depletes Magnesium — without restoring Mg, your nervous system can't fully relax. Together: Ashwagandha calms, Magnesium ensures you actually sleep. Bundle: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Ashwagandha + Magnesium → cortisol down (Ashwagandha) + nervous system relaxation (Mg)',
+        btns:['Get the sleep stack','Just Ashwagandha','Tell me more']
+      }
+    },
+    {
+      trigger:'Energy & strength', color:'#d97706',
+      l2:'Shilajit · CoQ10 · Ginseng · Safed Musli',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Let's unlock that natural energy! ⚡ What does 'low energy' look like for you?",
+        btns:['Tired by afternoon','Low stamina in gym','Fatigue all day']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{energy_issue}}, here's your natural energy stack ⚡\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Shilajit delivers fulvic acid INTO the mitochondria. CoQ10 is the molecule INSIDE the mitochondria that converts it to ATP energy. One is the delivery, the other is the engine — without both, you're running at half power. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Shilajit + CoQ10 → Shilajit delivers minerals to mitochondria; CoQ10 converts them to ATP',
+        btns:['Get the energy duo','Just Shilajit','How does it work?']
+      }
+    },
+    {
+      trigger:'Immunity & gut', color:'#059669',
+      l2:'Amla · Turmeric/Curcumin · Triphala · Probiotics',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Great preventive thinking! 🛡️ What's your main concern?",
+        btns:['Fall sick frequently','Gut & digestion','Both immunity & gut']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{immunity_concern}}, here's your Ayurvedic shield 🛡️\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Amla has natural Vitamin C with excellent bioavailability. But for a strong immune response, isolated Vit C at higher doses adds coverage Amla alone can't reach. The best of both worlds in one protocol. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Amla + Vitamin C (isolated) → natural bioavailability + therapeutic dose when needed',
+        btns:['Get immunity stack','Just Amla','Chat with expert']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_ayur_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! 🌿 Still exploring Ayurvedic supplements?\n\nMost trusted this week:\n{{bestseller_name}} · ⭐{{rating}} · Sourced from verified growers\n\nUse HYUGA10 for 10% off!",
+    btns:['Shop now','Browse all herbs']
+  }
+},
+{
+  key:'sexual', name:'Sexual Health', emoji:'🛡️',
+  color:'#db2777', bg:'#fff0f6', textColor:'#9d174d',
+  meta:'4 L2 categories · For Him, For Her, Intimacy Supplements, Devices',
+  tone:'Discreet · benefit-language only · never name the category',
+  dropoff:'Highest drop-off rate of all L1 categories. Embarrassment, privacy fear, stigma. WhatsApp template MUST NOT reference sexual health explicitly. Use "wellness" and "vitality" language only in MSG 1 (requires Meta approval with these exact words). The cross-sell unlock: position as energy/confidence products — intimate benefits are a natural outcome, not the lead messaging.',
+  msg1:{
+    tname:'hyugalife_vitality_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Wellness & Vitality',
+    body:"Hey {{1}}! 👋 You were browsing our wellness range on Hyugalife. We carry some of India's most trusted vitality supplements — ones most people don't know about.\n\nWhat matters most to you right now?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Energy & confidence','Hormonal balance','Relationship health']
+  },
+  branches:[
+    {
+      trigger:'Energy & confidence', color:'#6366f1',
+      l2:'Testosterone Boosters · Shilajit · Zinc · Vitamin D3 · Men\'s Vitality',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Great — let's find you the right support! 💪 What are you looking for?",
+        btns:['Natural energy boost','Hormone & strength','Complete vitality']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{vitality_goal}}, here's our most trusted vitality pick 💪\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Key insight from our nutritionist — 80% of Indian men are Vitamin D deficient, and D3 is a direct precursor to testosterone synthesis. Without restoring D3, no vitality supplement can reach full efficacy. Bundle with Zinc + D3: ₹{{bundle_price}}\n\nShips in discreet packaging 📦",
+        crossSell:'Testosterone Booster + Zinc + Vit D3 → 80% of Indian men are D3 deficient; D3 is a testosterone precursor',
+        btns:['Add to cart','Chat privately','See the stack']
+      }
+    },
+    {
+      trigger:'Hormonal balance', color:'#ec4899',
+      l2:'Shatavari · Women\'s Wellness · Ashwagandha · Women\'s Multivitamins',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Understood — we've got you covered! 💜 What area needs the most support?",
+        btns:['Mood & hormones','Energy & vitality','Overall wellness']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{wellness_area}}, here's our top recommendation 💜\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Shatavari works on hormonal pathways. But nutritional deficiencies (Iron, B12, D3) cause fatigue and mood dips that undermine everything. Adding a Women's Multivitamin addresses the root-cause layer Shatavari alone can't cover. Together: ₹{{bundle_price}}\n\nShips in discreet packaging 📦",
+        crossSell:"Shatavari + Women's Multivitamin → hormonal support + nutritional deficiency fix",
+        btns:['Get both','Just this one','Chat privately']
+      }
+    },
+    {
+      trigger:'Relationship health', color:'#d97706',
+      l2:'Intimacy Supplements · Shilajit · Ashwagandha · Massagers & Devices',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"We've curated the best for this 🤝 What's your primary focus?",
+        btns:['Boost intimacy','Stress affecting it','Partner wellness too']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{focus}}, here's what we recommend 🤝\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 The classic Ayurvedic duo — Shilajit provides mitochondrial energy while Ashwagandha reduces cortisol (which is the #1 hormonal suppressant). Energy up + stress down = the complete vitality foundation. Together: ₹{{bundle_price}}\n\nShips in discreet packaging 📦",
+        crossSell:'Shilajit + Ashwagandha → energy up + cortisol down = complete vitality foundation',
+        btns:['Get the combo','Just one','Chat privately']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_vitality_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! 👋 Still exploring wellness options?\n\nOne of our most discreetly shipped, highly rated picks:\n{{bestseller_name}} · ⭐{{rating}} · {{reviews}}+ verified buyers\n\nUse HYUGA10 for 10% off!",
+    btns:['Shop now','Chat with us']
+  }
+},
+{
+  key:'gear', name:'Fitness Gear & Accessories', emoji:'🏋️',
+  color:'#d97706', bg:'#fffbeb', textColor:'#92400e',
+  meta:'5 L2 categories · Resistance Bands, Braces, Equipment, Shakers, Fitness Accessories',
+  tone:'Active · goal-oriented · nutrition bridge play',
+  dropoff:'Price-comparing with Amazon/Flipkart — Hyugalife cannot win on gear price alone. The strategic unlock is unique: a supplement store selling gear means every gear buyer is a guaranteed nutrition prospect. Resistance band buyer = protein prospect. Knee brace buyer = Glucosamine prospect. The cross-sell from physical to nutritional is Hyugalife\'s single biggest competitive advantage in this category.',
+  msg1:{
+    tname:'hyugalife_gear_dropout_v1', type:'TEMPLATE',
+    header:'TEXT · Hyugalife Fitness Accessories',
+    body:"Hey {{1}}! 🏋️ Saw you checking out Fitness Accessories on Hyugalife.\n\nWhat kind of workout setup are you building?",
+    footer:'Hyugalife · Reply STOP to opt out',
+    btns:['Home workout setup','Gym training','Running & outdoor']
+  },
+  branches:[
+    {
+      trigger:'Home workout setup', color:'#6366f1',
+      l2:'Resistance Bands · Yoga Mats · Dumbbells · Home Gym Equipment',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Home workouts are the future! 🏠 What's your focus?",
+        btns:['Build muscle at home','Lose weight & tone','Flexibility & yoga']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For your {{goal}} home setup, here's your equipment pick 🏠\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 Here's the thing most people miss — {{gear}} creates the stimulus; protein provides the material for muscle repair. Without adequate protein, home workouts create micro-tears that can't rebuild. This is why people train for months with no results.\n\nComplete your setup with Whey Protein: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Resistance Bands + Whey Protein → stimulus + repair material (without protein, bands give no muscle growth)',
+        btns:['Complete my setup','Just the gear','Why do I need protein?']
+      }
+    },
+    {
+      trigger:'Gym training', color:'#d97706',
+      l2:'Gym Shakers · Gloves · Straps & Wraps · Gym Bags',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Serious about the gym — respect! 💪 What are you looking for?",
+        btns:['Training accessories','Protective gear','Shakers & bottles']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For your gym training, here's the essential pick 💪\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 The shaker IS the delivery system for pre-workout and protein. Bundle your shaker with a Pre-Workout Starter Pack — most gyms don't tell you this, but training without pre-workout is like driving with the handbrake on. Together: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Gym Shaker + Pre-Workout Starter Pack → the tool + the ingredient (natural cart completion)',
+        btns:['Get the kit','Just the gear','What pre-workout?']
+      }
+    },
+    {
+      trigger:'Running & outdoor', color:'#059669',
+      l2:'Knee Braces · Hydration Bottles · Running Accessories · Compression Gear',
+      msg2:{
+        tname:'Session message', type:'SESSION',
+        body:"Outdoor training is the best! 🏃 What do you need?",
+        btns:['Joint & knee support','Hydration gear','Full running kit']
+      },
+      msg3:{
+        tname:'Session message', type:'SESSION',
+        body:"For {{running_need}}, here's your outdoor essential 🏃\n\n{{product_name}}\n₹{{price}} · ⭐{{rating}} · {{reviews}} reviews\nBest for: {{goal_copy}}\n\n💡 A knee brace provides external mechanical support. But Glucosamine rebuilds joint cartilage from inside, and Omega 3 reduces joint inflammation. External + internal + anti-inflammatory = the only complete joint care protocol. Supplement bundle: ₹{{bundle_price}}\n\nUse HYUGA10 for 10% off!",
+        crossSell:'Knee Brace + Glucosamine + Omega 3 → external support + cartilage rebuild + anti-inflammatory',
+        btns:['Complete the kit','Just the brace','Learn more']
+      }
+    }
+  ],
+  fallback:{
+    tname:'hyugalife_gear_nudge_v1', type:'FALLBACK',
+    body:"Hey {{1}}! 🏋️ Still building your fitness setup?\n\nTop pick this week:\n{{bestseller_name}} · ⭐{{rating}} · Loved by {{reviews}}+ athletes\n\nFree delivery above ₹499 · Use HYUGA10 for 10% off!",
+    btns:['Shop now','Browse all gear']
+  }
+}
+];
+
+// ─────────────────────────────────────────────
+// RENDER ENGINE
+// ─────────────────────────────────────────────
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function nl2br(s){return escHtml(s).replace(/\n/g,'<br>')}
+function highlightVars(s){return escHtml(s).replace(/\{\{([^}]+)\}\}/g,'<span class="var-tag">{{$1}}</span>')}
+
+function badgeHtml(type){
+  const map={TEMPLATE:'badge-template',SESSION:'badge-session',FALLBACK:'badge-fallback'};
+  const lab={TEMPLATE:'Template · Meta approval required',SESSION:'Session message · free-form',FALLBACK:'Fallback template · Meta approval required'};
+  return `<span class="tmpl-badge ${map[type]}">${lab[type]}</span>`;
+}
+
+function templateCard(msg, title, cat){
+  const btnsHtml = (msg.btns||[]).map(b=>`<span class="tmpl-btn-tag">${escHtml(b)}</span>`).join('');
+  const headerLine = msg.header ? `<div class="tmpl-row"><div class="tmpl-label">Header</div><div style="font-size:12px;color:#555">${escHtml(msg.header)}</div></div>` : '';
+  const footerLine = msg.footer ? `<div class="tmpl-row" style="margin-top:8px"><div class="tmpl-label">Footer</div><div style="font-size:12px;color:#555">${escHtml(msg.footer)}</div></div>` : '';
+  const tnameLine = msg.tname ? `<span class="tmpl-name">${escHtml(msg.tname)}</span>` : '';
+  return `
+<div class="tmpl-card">
+  <div class="tmpl-card-header">
+    ${badgeHtml(msg.type)}
+    <span style="font-size:12px;font-weight:500;margin-left:6px;color:#333">${escHtml(title)}</span>
+    ${tnameLine}
+  </div>
+  <div class="tmpl-body">
+    ${headerLine}
+    <div class="tmpl-row"><div class="tmpl-label">Body copy</div></div>
+    <div class="tmpl-body-text">${highlightVars(msg.body)}</div>
+    ${footerLine}
+    <div class="tmpl-row" style="margin-top:8px"><div class="tmpl-label">Quick reply buttons</div></div>
+    <div class="tmpl-btns">${btnsHtml}</div>
+  </div>
+</div>`;
+}
+
+function branchTemplateCards(cat){
+  let html = '';
+  cat.branches.forEach((b,i)=>{
+    html += `<div style="border-left:3px solid ${b.color};padding-left:10px;margin-bottom:14px">
+      <div style="font-size:11px;font-weight:700;color:${b.color};margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em">Branch ${i+1}: User selects "${escHtml(b.trigger)}"</div>
+      <div style="font-size:11px;color:#666;margin-bottom:8px"><strong>Surfaces L2:</strong> ${escHtml(b.l2)}</div>
+      ${templateCard(b.msg2, 'MSG 2 · Narrow down', cat)}
+      <div style="margin-top:8px">${templateCard(b.msg3, 'MSG 3 · Recommendation + cross-sell', cat)}</div>
+      ${b.msg3.crossSell ? `<div class="cross-section"><strong>Cross-sell logic:</strong> ${escHtml(b.msg3.crossSell)}</div>` : ''}
+    </div>`;
+  });
+  return html;
+}
+
+function simBubble(body, btns, stepLabel, catKey, branchIdx, msgType){
+  const btnsHtml = btns.map((b,i)=>`<button class="flow-btn" onclick="flowClick('${catKey}',${branchIdx},${msgType},${i},this)">${escHtml(b)}</button>`).join('');
+  return `
+    ${stepLabel ? `<div class="step-label">${escHtml(stepLabel)}</div>` : ''}
+    <div class="msg-row">
+      <div class="sim-avatar" style="width:28px;height:28px;font-size:11px">H</div>
+      <div class="bubble-wrap">
+        <div class="bubble">${nl2br(body)}<div class="bubble-meta">12:05 PM ✓✓</div></div>
+        <div class="btns-wrap">${btnsHtml}</div>
+      </div>
+    </div>`;
+}
+
+function buildPanel(cat){
+  // chat area starts with MSG1
+  const msg1BtnsHtml = cat.msg1.btns.map((b,i)=>
+    `<button class="flow-btn" onclick="flowClick('${cat.key}',-1,1,${i},this)">${escHtml(b)}</button>`
+  ).join('');
+
+  const simHtml = `
+<div class="sim-wrap">
+  <div class="sim-header">
+    <div class="sim-avatar">H</div>
+    <div><div class="sim-name">Hyugalife</div><div class="sim-status">Tap a button to walk through the flow</div></div>
+    <button class="sim-reset" onclick="resetFlow('${cat.key}')">↺ Reset</button>
+  </div>
+  <div class="chat-area" id="chat-${cat.key}">
+    <div class="step-label">Trigger: user exits ${escHtml(cat.name)} L1 page · 15–30 min delay</div>
+    <div class="msg-row" id="msg1-${cat.key}">
+      <div class="sim-avatar" style="width:28px;height:28px;font-size:11px">H</div>
+      <div class="bubble-wrap">
+        <div class="bubble">${nl2br(cat.msg1.body)}<div class="bubble-meta">12:05 PM ✓✓</div></div>
+        <div class="btns-wrap" id="btns1-${cat.key}">${msg1BtnsHtml}</div>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+  const tmplHtml = `
+<div class="tmpl-section">
+  <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:8px;display:flex;align-items:center;gap:6px">
+    <span style="background:#1a1a1a;color:white;border-radius:20px;padding:3px 10px;font-size:10px">Template Library</span>
+    <span style="font-size:11px;font-weight:400;color:#aaa">All message copies ready for LimeChat · Variables highlighted in purple</span>
+  </div>
+  ${templateCard(cat.msg1, 'MSG 1 · Goal discovery · Outbound', cat)}
+  <div style="margin-top:12px;margin-bottom:4px;font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em">Branch-specific messages</div>
+  ${branchTemplateCards(cat)}
+  <div style="margin-top:4px">
+    <div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">T+24h fallback (no reply to MSG 1)</div>
+    ${templateCard(cat.fallback, 'Fallback nudge · Outbound', cat)}
+  </div>
+  <div class="flow-rules" style="margin-top:12px">
+    <div class="rule-item"><div class="rule-dot"></div><span><strong>Trigger delay:</strong> 15–30 min post page exit</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span><strong>Suppress:</strong> purchased in last 7 days</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span><strong>Max frequency:</strong> 1 re-engagement attempt per session</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span><strong>Opt-out:</strong> honoured at every node — no exceptions</span></div>
+  </div>
+</div>`;
+
+  return `
+<div class="panel" id="panel-${cat.key}" style="--cat-color:${cat.color}">
+  <div class="cat-header">
+    <div class="cat-icon" style="background:${cat.bg};font-size:22px">${cat.emoji}</div>
+    <div>
+      <div class="cat-title">${escHtml(cat.name)}</div>
+      <div class="cat-sub">${escHtml(cat.meta)}</div>
+    </div>
+    <span class="tone-pill" style="background:${cat.bg};color:${cat.textColor}">${escHtml(cat.tone)}</span>
+  </div>
+  <div class="insight"><strong>Drop-off insight:</strong> ${escHtml(cat.dropoff)}</div>
+  <div class="two-col">
+    ${simHtml}
+    ${tmplHtml}
+  </div>
+</div>`;
+}
+
+// ─────────────────────────────────────────────
+// FLOW INTERACTION
+// ─────────────────────────────────────────────
+const flowState = {};
+
+function flowClick(catKey, branchIdx, msgType, btnIdx, el){
+  const cat = CATS.find(c=>c.key===catKey);
+  if(!cat) return;
+  const chatEl = document.getElementById('chat-'+catKey);
+
+  if(msgType===1){ // MSG1 clicked
+    // disable all msg1 buttons
+    document.querySelectorAll(`#btns1-${catKey} .flow-btn`).forEach(b=>{b.classList.add('disabled');b.classList.remove('selected')});
+    el.classList.remove('disabled'); el.classList.add('selected');
+    flowState[catKey] = {branch: btnIdx};
+    const branch = cat.branches[btnIdx];
+
+    // remove any existing msg2/msg3
+    ['msg2-'+catKey,'msg3-'+catKey,'step2-'+catKey,'step3-'+catKey].forEach(id=>{const e=document.getElementById(id);if(e)e.remove()});
+
+    // inject step label
+    const stepDiv = document.createElement('div');
+    stepDiv.id = 'step2-'+catKey; stepDiv.className='step-label';
+    stepDiv.textContent = `Branch: "${branch.trigger}" → surfacing ${branch.l2.split('·')[0].trim()}`;
+    chatEl.appendChild(stepDiv);
+
+    // inject msg2
+    const msg2Div = document.createElement('div');
+    msg2Div.id = 'msg2-'+catKey; msg2Div.className='msg-row';
+    const b2Html = branch.msg2.btns.map((b,i)=>`<button class="flow-btn" onclick="flowClick('${catKey}',${btnIdx},2,${i},this)">${escHtml(b)}</button>`).join('');
+    msg2Div.innerHTML = `<div class="sim-avatar" style="width:28px;height:28px;font-size:11px">H</div>
+      <div class="bubble-wrap">
+        <div class="bubble bubble-green">${nl2br(branch.msg2.body)}<div class="bubble-meta">12:06 PM ✓✓</div></div>
+        <div class="btns-wrap" id="btns2-${catKey}">${b2Html}</div>
+      </div>`;
+    chatEl.appendChild(msg2Div);
+    chatEl.scrollTop = chatEl.scrollHeight;
+
+  } else if(msgType===2){ // MSG2 clicked
+    document.querySelectorAll(`#btns2-${catKey} .flow-btn`).forEach(b=>{b.classList.add('disabled');b.classList.remove('selected')});
+    el.classList.remove('disabled'); el.classList.add('selected');
+    const bIdx = flowState[catKey]?.branch ?? 0;
+    const branch = cat.branches[bIdx];
+
+    ['msg3-'+catKey,'step3-'+catKey].forEach(id=>{const e=document.getElementById(id);if(e)e.remove()});
+
+    const stepDiv = document.createElement('div');
+    stepDiv.id = 'step3-'+catKey; stepDiv.className='step-label';
+    stepDiv.textContent = `Sub-selection: "${branch.msg2.btns[btnIdx]}" → recommendation engine fires`;
+    chatEl.appendChild(stepDiv);
+
+    const msg3Div = document.createElement('div');
+    msg3Div.id = 'msg3-'+catKey; msg3Div.className='msg-row';
+    const b3Html = branch.msg3.btns.map(b=>`<button class="flow-btn cta">${escHtml(b)}</button>`).join('');
+    const productCard = `<div class="product-card">
+      <div class="pname">{{product_name}}</div>
+      <div class="pdesc">Best for: {{goal_copy}}</div>
+      <div class="prow"><span class="pprice">₹{{price}}</span><span class="prating">⭐ {{rating}} · {{reviews}} reviews</span></div>
+    </div>`;
+    const bodyPreview = branch.msg3.body.split('\n').slice(0,3).join('\n');
+    msg3Div.innerHTML = `<div class="sim-avatar" style="width:28px;height:28px;font-size:11px">H</div>
+      <div class="bubble-wrap">
+        <div class="bubble bubble-green">${nl2br(bodyPreview)}<br>${productCard}<div class="bubble-meta">12:07 PM ✓✓</div></div>
+        <div class="btns-wrap">${b3Html}</div>
+      </div>`;
+    chatEl.appendChild(msg3Div);
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }
+}
+
+function resetFlow(catKey){
+  const cat = CATS.find(c=>c.key===catKey);
+  const chatEl = document.getElementById('chat-'+catKey);
+  ['msg2-'+catKey,'msg3-'+catKey,'step2-'+catKey,'step3-'+catKey].forEach(id=>{const e=document.getElementById(id);if(e)e.remove()});
+  document.querySelectorAll(`#btns1-${catKey} .flow-btn`).forEach(b=>{b.classList.remove('disabled','selected')});
+  delete flowState[catKey];
+  chatEl.scrollTop=0;
+}
+
+// ─────────────────────────────────────────────
+// TABS + INIT
+// ─────────────────────────────────────────────
+function init(){
+  const tabsWrap = document.getElementById('tabsWrap');
+  const panelsWrap = document.getElementById('panelsWrap');
+
+  CATS.forEach((cat,i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn' + (i===0?' active':'');
+    btn.textContent = cat.emoji+' '+cat.name;
+    btn.style.setProperty('--cat-color', cat.color);
+    if(i===0) btn.style.color = cat.color;
+    btn.onclick = ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.style.color='';});
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.style.color = cat.color;
+      document.getElementById('panel-'+cat.key).classList.add('active');
+    };
+    tabsWrap.appendChild(btn);
+    panelsWrap.innerHTML += buildPanel(cat);
+  });
+
+  document.getElementById('panel-'+CATS[0].key).classList.add('active');
+}
+
+init();
+</script>
+</body>
+</html>
